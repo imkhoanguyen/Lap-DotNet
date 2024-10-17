@@ -1,4 +1,6 @@
-﻿using Domain.Entities;
+﻿using Application.Abstract;
+using Domain.Entities;
+using Infrastructure.DataAccess.Repository;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -17,6 +19,8 @@ namespace Infrastructure.DataAccess.Confg
 
             services.AddIdentity<AppUser, IdentityRole>()
                             .AddEntityFrameworkStores<BookContext>();
+
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
         }
     }
 }
